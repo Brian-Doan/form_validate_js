@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation #2</title>
+    <link type="text/css" rel="stylesheet" href="form.css" />
+</head>
+<body>
+    <!-- Tạo form đăng ký đơn giản -->
+    <div class="main">
+        <form action="#" method="POST" class="form" id="register-form">
+            <h3 class="heading">Thành viên đăng ký</h3>
+            <p class="desc">Cùng nhau học lập trình miễn phí tại F8 ❤️</p>
+
+            <!-- Dùng form-group chứa một thành phần input -->
+            <!-- Đưa các rules vào thẻ input như một attribute -->
+            <div class="form-group">
+                <label for="fullname" class="form-label">Tên đầy đủ</label>
+                <input type="text" name="fullname" rules="required" id="fullname" placeholder="VD: Nguyễn A" class="form-control">
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" name="email" rules="required|email" id="email" placeholder="VD: email@domain.com" class="form-control">
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input type="password" name="password" rules="required|min:6" id="password" placeholder="Nhập mật khẩu" class="form-control">
+                <span class="form-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="password_confirmation" class="form-label">Nhập lại mật khẩu</label>
+                <input type="password" name="password_confirmation" rules="required|confirm" id="password_confirmation" placeholder="Nhập lại mật khẩu" class="form-control">
+                <span class="form-message"></span>
+            </div>
+
+            <button class="form-submit">Đăng ký</button>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="form_validator_2.js"></script>
+    <script>
+        // khi có từ khoá 'new', Validator là một function constructor
+        // form là một đối tượng được khởi tạo
+        // form có thể sử dụng các thuộc tính và phương thức mà nó được Validator khởi tạo cho
+        var registerForm = new Validator('#register-form')
+
+        // Gọi phương thức onSubmit của Validator
+        // Nếu không dùng onSubmit thì dùng hành vi mặc định của HTML form
+        registerForm.onSubmit = function(formData) {
+            console.log('Form data: ' ,formData)
+        }
+
+    </script>
+</body>
+</html>
